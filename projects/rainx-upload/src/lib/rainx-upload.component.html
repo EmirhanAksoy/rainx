@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col  text-center">
+                <button [ngClass]="class"  (click)="uploadClick($event)" >{{fileName}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input style="display: none;" accept="{{accept}}" [multiple]="multiple" (change)="change($event)" #hiddenInput type="file">

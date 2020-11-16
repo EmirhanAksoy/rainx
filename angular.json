@@ -1,0 +1,171 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "rainx-upload": {
+      "projectType": "library",
+      "root": "projects/rainx-upload",
+      "sourceRoot": "projects/rainx-upload/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/rainx-upload/tsconfig.lib.json",
+            "project": "projects/rainx-upload/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/rainx-upload/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rainx-upload/src/test.ts",
+            "tsConfig": "projects/rainx-upload/tsconfig.spec.json",
+            "karmaConfig": "projects/rainx-upload/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rainx-upload/tsconfig.lib.json",
+              "projects/rainx-upload/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "Test": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/test",
+      "sourceRoot": "projects/test/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/Test",
+            "index": "projects/test/src/index.html",
+            "main": "projects/test/src/main.ts",
+            "polyfills": "projects/test/src/polyfills.ts",
+            "tsConfig": "projects/test/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/test/src/favicon.ico",
+              "projects/test/src/assets"
+            ],
+            "styles": [
+              "projects/test/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/test/src/environments/environment.ts",
+                  "with": "projects/test/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "Test:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "Test:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "Test:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/test/src/test.ts",
+            "polyfills": "projects/test/src/polyfills.ts",
+            "tsConfig": "projects/test/tsconfig.spec.json",
+            "karmaConfig": "projects/test/karma.conf.js",
+            "assets": [
+              "projects/test/src/favicon.ico",
+              "projects/test/src/assets"
+            ],
+            "styles": [
+              "projects/test/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/test/tsconfig.app.json",
+              "projects/test/tsconfig.spec.json",
+              "projects/test/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/test/e2e/protractor.conf.js",
+            "devServerTarget": "Test:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "Test:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": "47f4e010-bebb-4f92-bfd6-24478fa7d971"
+  },
+  "defaultProject": "rainx-upload"
+}
