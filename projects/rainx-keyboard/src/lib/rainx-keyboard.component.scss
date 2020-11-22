@@ -1,0 +1,22 @@
+.minimizeButton {
+    transform: translateY(-50px);
+    position: absolute;
+    right: 3px;
+}
+
+.closeButton {
+    transform: translateY(-50px);
+    position: absolute;
+    right: 50px;
+}
+
+
+.keyboard {
+    z-index: 10004;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background-color: rgb(92, 89, 89); 
+    box-shadow:3px 3px 5px 6px rgb(56, 55, 55);
+    border-radius: 5px;
+}

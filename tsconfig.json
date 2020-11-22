@@ -23,6 +23,10 @@
       "rainx-upload": [
         "dist/rainx-upload/rainx-upload",
         "dist/rainx-upload"
+      ],
+      "rainx-keyboard": [
+        "dist/rainx-keyboard/rainx-keyboard",
+        "dist/rainx-keyboard"
       ]
     }
   },

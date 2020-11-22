@@ -1,0 +1,9 @@
+<button (click)="handleClick($event)" 
+        (mousedown)="disableMouseDownEvent($event)" 
+        class="btn w-100 btn-primary"
+        [ngClass]="className"
+        [style.fontSize]="fontSize + 'px'"
+        style="height:36px;">
+        {{textResult}}
+</button>
+
