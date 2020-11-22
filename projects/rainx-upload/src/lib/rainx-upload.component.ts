@@ -1,7 +1,8 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'lib-rainx-upload',
+  // tslint:disable-next-line: component-selector
+  selector: 'rainx-upload',
   templateUrl: './rainx-upload.component.html',
   styleUrls: ['./rainx-upload.style.scss']
 })
@@ -13,7 +14,7 @@ export class RainxUploadComponent {
 
   @Input() public files: File[] = [];
   @Input() public multiple = false;
-  @Input() public class = 'btn btn-sm w-100 btn-primary';
+  @Input() public class = '';
   @Input() public accept = '*';
   @Input() public text = 'Upload file';
   @Input() public showFileList = false;
