@@ -8,12 +8,36 @@
     
   ## Usage 
   
-    <lib-rainx-upload [multiple]="true" 
+   -Module Import
+      
+      import { BrowserModule } from '@angular/platform-browser';
+      import { NgModule } from '@angular/core';
+      import { AppRoutingModule } from './app-routing.module';
+      import { AppComponent } from './app.component';
+      import { RainxUploadModule } from 'rainx-upload';
+
+     @NgModule({
+       declarations: [
+         AppComponent,
+       ],
+       imports: [
+         BrowserModule,
+         AppRoutingModule,
+         RainxUploadModule
+       ],
+       providers: [],
+       bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+    
+   -HTML
+  
+    <rainx-upload [multiple]="true" 
                       [showFileList]="false" 
                       [class]="'btn btn-danger w-100'" 
                       [text]="'Upload File'" 
                       (uploadFinished)="uploadFinished($event)" >
-    </lib-rainx-upload>
+    </rainx-upload>
     
     
    ## Properties
