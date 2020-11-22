@@ -33,10 +33,10 @@
    -HTML
   
     <rainx-upload [multiple]="true" 
-                      [showFileList]="false" 
-                      [class]="'btn btn-danger w-100'" 
-                      [text]="'Upload File'" 
-                      (uploadFinished)="uploadFinished($event)" >
+                  [showFileList]="false" 
+                  [class]="'btn btn-danger w-100'" 
+                  [text]="'Upload File'" 
+                  (uploadFinished)="uploadFinished($event)" >
     </rainx-upload>
     
     
