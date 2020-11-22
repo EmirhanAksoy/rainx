@@ -1,6 +1,10 @@
 # File Upload Component 
 
   https://www.npmjs.com/package/rainx-upload
+  
+  ## Demo Application 
+
+   https://stackblitz.com/edit/angular-ivy-dzhigu?file=src/app/app.component.html
 
   ## Installation
 
