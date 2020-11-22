@@ -8,7 +8,7 @@
     
   ## Usage 
   
-   -Module Import
+   - Module Import
       
       import { BrowserModule } from '@angular/platform-browser';
       import { NgModule } from '@angular/core';
@@ -30,7 +30,7 @@
     })
     export class AppModule { }
     
-   -HTML
+   - HTML
   
     <rainx-upload [multiple]="true" 
                   [showFileList]="false" 
