@@ -14,7 +14,7 @@ export class RainxUploadComponent {
 
   @Input() public files: File[] = [];
   @Input() public multiple = false;
-  @Input() public class = '';
+  @Input() public class = 'btn btn-sm w-100 btn-primary';
   @Input() public accept = '*';
   @Input() public text = 'Upload file';
   @Input() public showFileList = false;
