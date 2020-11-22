@@ -51,7 +51,7 @@ export class RainxKeyboardComponent implements OnInit {
     this.keyboardService.keyboardClick.emit(this.currentString);
   }
 
-  public kapatBtn(): void {
+  public hideKeyboard(): void {
     this.keyboardService.close();
   }
 
