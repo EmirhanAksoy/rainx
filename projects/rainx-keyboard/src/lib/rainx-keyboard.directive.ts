@@ -21,11 +21,13 @@ export class RainxKeyboardDirective implements OnInit {
           this.keyboardService.canMove = true;
           return;
         }
-        const array = Array.from(document.getElementsByTagName('input')).filter(x => x.hasAttribute('appKeyboard'));
+        const array = Array.from(document.getElementsByTagName('input')).filter(x => x.hasAttribute('rainxKeyboard'));
         const index = array.indexOf(document.activeElement as HTMLInputElement);
-
         this.keyboardService.canMove = false;
-        array[(index + 1) % array.length].focus();
+        setTimeout(() => {
+          array[(index + 1) % array.length].focus();
+        }, 0);
+
       });
       this.keyboardService.keyboardClick.subscribe((data: any) => {
         if (document.activeElement === this.elementRef.nativeElement) {
