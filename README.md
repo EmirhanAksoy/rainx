@@ -6,7 +6,7 @@
   
   ## Demo Application 
 
-  https://stackblitz.com/edit/angular-ivy-dzhigu?
+  https://stackblitz.com/edit/angular-ivy-dzhigu
 
   ## Installation
 
