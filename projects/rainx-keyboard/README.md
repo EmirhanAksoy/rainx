@@ -1,24 +1,45 @@
-# RainxKeyboard
+# Keyboard Component
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0.
+ https://www.npmjs.com/package/rainx-keyboard
 
-## Code scaffolding
+ This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0.
 
-Run `ng generate component component-name --project rainx-keyboard` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project rainx-keyboard`.
-> Note: Don't forget to add `--project rainx-keyboard` or else it will be added to the default project in your `angular.json` file. 
+ Installation :
 
-## Build
+    npm install rainx-keyboard
+    
+  Usage :
+  
+   Module Import :
+      
+      import { BrowserModule } from '@angular/platform-browser';
+      import { NgModule } from '@angular/core';
+      import { AppRoutingModule } from './app-routing.module';
+      import { AppComponent } from './app.component';
+      import { RainxKeyboard } from 'rainx-keyboard';
 
-Run `ng build rainx-keyboard` to build the project. The build artifacts will be stored in the `dist/` directory.
+     @NgModule({
+       declarations: [
+         AppComponent,
+       ],
+       imports: [
+         BrowserModule,
+         AppRoutingModule,
+         RainxKeyboardModule
+       ],
+       providers: [],
+       bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+    
+   In html :
+    
+      Add `rainxKeyboard` directive to all inputs.
+      
+      It is require that all input that use keyboard component must have ngModel or formControl.
 
-## Publishing
+      <input rainxKeyboard [(ngModel)]="value" />
 
-After building your library with `ng build rainx-keyboard`, go to the dist folder `cd dist/rainx-keyboard` and run `npm publish`.
+      <rainx-keyboard>
 
-## Running unit tests
-
-Run `ng test rainx-keyboard` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+      </rainx-keyboard>     
