@@ -1,4 +1,5 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { saveAs } from 'file-saver';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -55,6 +56,10 @@ export class RainxUploadComponent {
 
   public shortFileName(file: File): string {
     return `${file.name.substring(0, 10)} ...  .${file.name.split('.').pop()}`;
+  }
+
+  public downloadFile(event: MouseEvent, file: File): void {
+    saveAs(file);
   }
 
 }
