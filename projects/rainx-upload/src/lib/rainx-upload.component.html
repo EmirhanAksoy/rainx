@@ -1,17 +1,20 @@
-<div class="row border p-2 rounded bound">
-    <div class="col-12">
-        <div class="row">
-            <div class="col text-center">
-                <button [ngClass]="class" (click)="uploadClick($event)">{{fileName}}</button>
+<div class="bound">
+    <div>
+        <div>
+            <div class="buttonWrapper">
+                <button class="customButton" [ngClass]="theme" (click)="uploadClick($event)">{{fileName}}</button>
             </div>
         </div>
-        <div *ngIf="filesExist && showFileList" class="row mt-2">
-            <ul class="list-group w-100 " *ngFor="let file of files">
-                <li class="list-group-item">
-                    <span class="p-1">
+        <div *ngIf="filesExist && showFileList">
+            <ul class="list" *ngFor="let file of files">
+                <li>
+                    <span>
                         {{shortFileName(file)}}
                     </span>
-                    <span (click)="downloadFile($event,file)" class="float-right pb-1 pb-1 pl-2 pr-2 cursor-pointer">
+                    <span class="spacer">
+
+                    </span>
+                    <span (click)="downloadFile($event,file)" class="float-right cursor-pointer">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -20,7 +23,7 @@
                                 d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                         </svg>
                     </span>
-                    <span (click)="removeFile($event,file)" class="float-right pb-1 pb-1 pl-2 pr-2 cursor-pointer">
+                    <span (click)="removeFile($event,file)" class="float-right cursor-pointer">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -35,5 +38,9 @@
     </div>
 </div>
 
-<input style="display: none;" accept="{{accept}}" [multiple]="multiple" (change)="change($event)" #hiddenInput
-    type="file">
+<input style="display: none;" 
+       accept="{{accept}}" 
+       [multiple]="multiple" 
+       (change)="change($event)" 
+       #hiddenInput
+       type="file">

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { saveAs } from 'file-saver';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -11,18 +10,17 @@ export class RainxUploadComponent {
 
   @ViewChild('hiddenInput') public someInput: any | undefined;
 
-  @Output() public uploadFinished = new EventEmitter<any>(true);
+  @Output() public filesUpdated = new EventEmitter<any>(true);
 
   @Input() public files: File[] = [];
+  @Input() public maxBayt = 0;
   @Input() public multiple = false;
-  @Input() public class = 'btn btn-sm w-100 btn-primary';
+  @Input() public theme: 'danger' | 'primary' | 'secondary' | 'info' | 'success' = 'primary';
   @Input() public accept = '*';
   @Input() public text = 'Upload file';
   @Input() public showFileList = false;
 
   constructor() { }
-
-
 
   public get filesExist(): boolean {
     return this.files && this.files.length > 0;
@@ -44,14 +42,18 @@ export class RainxUploadComponent {
   }
 
   public change(event: any): void {
-    this.files = Array.from(event.target.files);
-    this.uploadFinished.emit(this.files);
+    const fileList: File[] = Array.from(event.target.files);
+    if (this.maxBayt) {
+      this.filesUpdated.emit(fileList.filter(x => x.size <= this.maxBayt));
+    } else {
+      this.filesUpdated.emit(fileList);
+    }
   }
 
   public removeFile(event: any, file: File): void {
     const index = this.files.map(x => x.lastModified).indexOf(file.lastModified);
     this.files.splice(index, 1);
-    this.uploadFinished.emit(this.files);
+    this.filesUpdated.emit(this.files);
   }
 
   public shortFileName(file: File): string {
@@ -59,7 +61,15 @@ export class RainxUploadComponent {
   }
 
   public downloadFile(event: MouseEvent, file: File): void {
-    saveAs(file);
+    if (!file) {
+      return;
+    }
+    const a = window.document.createElement('a');
+    a.href = window.URL.createObjectURL(file);
+    a.download = file.name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 
 }
