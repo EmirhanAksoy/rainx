@@ -59,16 +59,21 @@
       type : booelan
       defaut : false
    
-   - class : Bootstrap classes
+   - theme : Button themes
    
-      type : string
-      defaut : 'btn btn-sm w-100 btn-primary'
+      type : string = 'danger' | 'primary' | 'secondary' | 'info' | 'success'
+      defaut : 'primary'
    
    - text : Default button text
    
       type : string
       defaut : 'Upload File' 
+
+   - maxBayt : Max size of file
    
+      type : number
+      defaut : 0   
+
    ## Events 
    
    - uploadFinished : It is triggered when the file is loaded and a file is deleted from the file list.

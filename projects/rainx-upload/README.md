@@ -56,7 +56,7 @@
       type : booelan
       defaut : false
    
-   - theme : Bootstrap classes
+   - theme : Button themes
    
       type : string = 'danger' | 'primary' | 'secondary' | 'info' | 'success'
       defaut : 'primary'
