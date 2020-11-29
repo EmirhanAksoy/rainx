@@ -42,7 +42,7 @@
                   [showFileList]="false" 
                   [class]="'btn btn-danger w-100'" 
                   [text]="'Upload File'" 
-                  (uploadFinished)="uploadFinished($event)" >
+                  (filesUpdated)="filesUpdated($event)" >
     </rainx-upload>
     
     
@@ -71,7 +71,7 @@
    
    ## Events 
    
-   - uploadFinished : It is triggered when the file is loaded and a file is deleted from the file list.
+   - filesUpdated : It is triggered when the file is loaded and a file is deleted from the file list.
    
       return : File[] 
      
