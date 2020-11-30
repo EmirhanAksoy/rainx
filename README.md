@@ -86,13 +86,17 @@
 
  This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0.
 
+ Demo Application :
+  
+ https://stackblitz.com/edit/angular-ivy-difzur
+
  Installation :
 
     npm install rainx-keyboard
     
-  Usage :
+  ## Usage :
   
-   Module Import :
+   ### Module Import :
       
       import { BrowserModule } from '@angular/platform-browser';
       import { NgModule } from '@angular/core';
@@ -114,14 +118,22 @@
     })
     export class AppModule { }
     
-   In html :
+   ### In html :
 
       <input rainxKeyboard [(ngModel)]="value" />
 
-      <rainx-keyboard>
+       <input rainxKeyboard [(ngModel)]="value" />
 
-      </rainx-keyboard>     
+      <rainx-keyboard [showOnlyFocus]="false">
+
+      </rainx-keyboard>  
+
+   ### Properties :
    
+   - showOnlyFocus : Show keyboard only focus an input element
+      
+      type : booelan
+      defaut : false
    
 
   

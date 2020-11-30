@@ -12,13 +12,45 @@
     right: 50px;
 }
 
+.minimizeButtonTop {
+    transform: translateY(10px);
+    position: absolute;
+    right: 3px;
+}
+
+.closeButtonTop {
+    transform: translateY(10px);
+    position: absolute;
+    right: 50px;
+}
 
 .keyboard {
-    z-index: 10004;
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background-color: rgb(92, 89, 89); 
-    box-shadow:3px 3px 5px 6px rgb(56, 55, 55);
+    z-index: 1000000;
+    position: fixed;
+    width: 100%;
+    background-color: rgb(92, 89, 89);
+    box-shadow: 3px 3px 5px 6px rgb(56, 55, 55);
     border-radius: 5px;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.top {
+    top: 0;
+}
+
+.dockButton {
+    transform: translateY(-50px);
+    position: absolute;
+    width: 150px;
+    left: 10px;
+}
+
+.dockButtonTop {
+    transform: translateY(10px);
+    position: absolute;
+    width: 150px;
+    left: 10px;
 }

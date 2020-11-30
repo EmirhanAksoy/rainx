@@ -41,6 +41,7 @@ export class RainxKeyboardDirective implements OnInit {
 
   @HostListener('focus', ['$event'])
   public handleFocus(event: any): void {
+    debugger;
     if (!this.keyboardService.isOpen) {
       this.keyboardService.toogleOpen();
     }

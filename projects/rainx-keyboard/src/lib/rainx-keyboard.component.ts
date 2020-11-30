@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RainxKeyboardService } from './rainx-keyboard.service';
 
 @Component({
@@ -9,11 +9,30 @@ import { RainxKeyboardService } from './rainx-keyboard.service';
 })
 export class RainxKeyboardComponent implements OnInit {
 
-  constructor(public keyboardService: RainxKeyboardService) { }
+
+  @Input() public showOnlyFocus = false;
+
+
+  constructor(public keyboardService: RainxKeyboardService) {
+
+    document.addEventListener('click', (event) => {
+
+      if (this.showOnlyFocus && document.activeElement?.tagName.toLowerCase() !== 'input') {
+        keyboardService.close();
+      }
+
+    }, false);
+
+  }
+
+  public get dockButtonText(): string {
+    return this.keyboardService.dockType === 'bottom' ? 'Up' : 'Down';
+  }
 
   public height = 245;
   public collapsed = false;
   public isCapsLock = true;
+
 
   private currentString = '';
 

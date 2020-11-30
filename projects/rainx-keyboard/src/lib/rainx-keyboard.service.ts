@@ -6,6 +6,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 export class RainxKeyboardService {
 
   public value = '';
+  public dockType: 'bottom' | 'top' = 'bottom';
   public isUpperCase = false;
   public isOpen = false;
   public isMinimize = false;
@@ -15,6 +16,14 @@ export class RainxKeyboardService {
   public canMove = true;
 
   constructor() { }
+
+  public get isDockTop(): boolean {
+    return this.dockType === 'top';
+  }
+
+  public get isDockBottom(): boolean {
+    return this.dockType === 'bottom';
+  }
 
   public open(): void {
     this.isOpen = true;
@@ -34,5 +43,21 @@ export class RainxKeyboardService {
 
   public toogleCapsLock(): void {
     this.isUpperCase = !this.isUpperCase;
+  }
+
+  public toogleDock(): void {
+    if (this.dockType === 'bottom') {
+      this.dockTop();
+    } else {
+      this.dockBottom();
+    }
+  }
+
+  public dockTop(): void {
+    this.dockType = 'top';
+  }
+
+  public dockBottom(): void {
+    this.dockType = 'bottom';
   }
 }

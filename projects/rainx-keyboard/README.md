@@ -1,8 +1,16 @@
 # Keyboard Component
 
- https://www.npmjs.com/package/rainx-keyboard
+ Demo Application :
+  
+ https://stackblitz.com/edit/angular-ivy-difzur
 
  This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0.
+
+ This library has peer dependencies.
+
+ Peer Dependencies :
+  
+   "bootstrap": "^4.3.1"
 
  Installation :
 
@@ -36,10 +44,17 @@
     
       Add `rainxKeyboard` directive to all inputs.
       
-      It is require that all input that use keyboard component must have ngModel or formControl.
+      Inputs must have ngModel or formControl.
 
       <input rainxKeyboard [(ngModel)]="value" />
 
-      <rainx-keyboard>
+      <rainx-keyboard [showOnlyFocus]="false">
 
-      </rainx-keyboard>     
+      </rainx-keyboard>  
+
+    Properties :
+   
+   - showOnlyFocus : Show keyboard only focus an input element
+      
+      type : booelan
+      defaut : false
