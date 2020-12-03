@@ -1,4 +1,4 @@
-# Keyboard Component
+# Virtual Keyboard Component
 
  Demo Application :
   
@@ -17,6 +17,9 @@
     npm install rainx-keyboard
     
   Usage :
+
+    This keyboard component is able to bind data for ngModel and formcontrol.If an input has ngControl , the keyboard directly sets it , if has not it sets the html value.
+
   
    Module Import :
       
@@ -43,8 +46,6 @@
    In html :
     
       Add `rainxKeyboard` directive to all inputs.
-      
-      Inputs must have ngModel or formControl.
 
       <input rainxKeyboard [(ngModel)]="value" />
 

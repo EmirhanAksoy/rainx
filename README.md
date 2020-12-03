@@ -80,11 +80,17 @@
    
       return : File[] 
      
-# Keyboard Component
+# Virtual Keyboard Component
 
  https://www.npmjs.com/package/rainx-keyboard
 
  This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0.
+
+ This library has peer dependencies.
+
+ Peer Dependencies :
+  
+   "bootstrap": "^4.3.1"
 
  Demo Application :
   
@@ -95,6 +101,8 @@
     npm install rainx-keyboard
     
   ## Usage :
+
+   This keyboard component is able to bind data for ngModel and formcontrol.If an input has ngControl , the keyboard directly sets it , if has not it sets the html value.
   
    ### Module Import :
       
