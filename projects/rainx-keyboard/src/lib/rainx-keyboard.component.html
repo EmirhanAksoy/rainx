@@ -1,5 +1,6 @@
 <div class="keyboard" [style.height.px]="height" [ngClass]="{'bottom': keyboardService.dockType === 'bottom',
-                           'top' : keyboardService.dockType === 'top'}" *ngIf="keyboardService.isOpen">
+                           'top' : keyboardService.dockType === 'top'}" *ngIf="keyboardService.isOpen"
+  (mousedown)="disableMouseDownEvent($event)">
   <button class="btn btn-primary m-1 minimizeButton" (mousedown)="disableMouseDownEvent($event)" (click)="minimize()">
     <svg *ngIf="!collapsed" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill="currentColor"
       xmlns="http://www.w3.org/2000/svg">
@@ -19,7 +20,8 @@
       <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
     </svg>
   </button>
-  <button class="btn btn-success m-1 dockButton" (mousedown)="disableMouseDownEvent($event)" (click)="keyboardService.toogleDock()">
+  <button class="btn btn-success m-1 dockButton" (mousedown)="disableMouseDownEvent($event)"
+    (click)="keyboardService.toogleDock()">
     {{dockButtonText}}
   </button>
 
@@ -71,7 +73,7 @@
         </div>
         <div class="col px-1">
           <button class="btn btn-primary w-100" style="height: 36px;" (mousedown)="disableMouseDownEvent($event)"
-            (click)="charPressed('@backspace@')">
+            (click)="handleBackSpace()">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -197,7 +199,7 @@
       <div class="row py-1">
         <div class="col-sm-1 px-1">
           <button class="btn btn-warning w-100" style="height: 36px;" (mousedown)="disableMouseDownEvent($event)"
-            (click)="charPressed('@tab@')">
+            (click)="handleTabClick()">
             Tab
           </button>
         </div>
@@ -208,7 +210,7 @@
         <div class="col-sm-1 px-1">
           <button class="btn w-100"
             [ngClass]="{'btn-primary':!keyboardService.isUpperCase,'btn-info':keyboardService.isUpperCase}"
-            style="height: 36px;" (mousedown)="disableMouseDownEvent($event)" (click)="charPressed('@capslock@')">
+            style="height: 36px;" (mousedown)="disableMouseDownEvent($event)" (click)="handleCapsLock()">
             CapsLock
           </button>
         </div>
@@ -237,7 +239,8 @@
       <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
     </svg>
   </button>
-  <button *ngIf="this.keyboardService.isDockTop" class="btn btn-success m-1 dockButtonTop" (mousedown)="disableMouseDownEvent($event)" (click)="keyboardService.toogleDock()">
+  <button *ngIf="this.keyboardService.isDockTop" class="btn btn-success m-1 dockButtonTop"
+    (mousedown)="disableMouseDownEvent($event)" (click)="keyboardService.toogleDock()">
     {{dockButtonText}}
   </button>
 
