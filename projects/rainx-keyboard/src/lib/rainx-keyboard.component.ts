@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { RainxKeyboardService } from './rainx-keyboard.service';
 
@@ -12,34 +13,29 @@ export class RainxKeyboardComponent implements OnInit {
 
   @Input() public showOnlyFocus = false;
 
+  public readonly maxHeight = 245;
+  public readonly minHeight = 50;
 
-  constructor(public keyboardService: RainxKeyboardService) {
+  public height = this.maxHeight;
 
-    document.addEventListener('click', (event) => {
-
-      if (this.showOnlyFocus && document.activeElement?.tagName.toLowerCase() !== 'input') {
-        keyboardService.close();
-      }
-
-    }, false);
-
-  }
-
-  public get dockButtonText(): string {
-    return this.keyboardService.dockType === 'bottom' ? 'Up' : 'Down';
-  }
-
-  public height = 245;
   public collapsed = false;
   public isCapsLock = true;
 
-
   private currentString = '';
+
+
+  constructor(public keyboardService: RainxKeyboardService) {
+    this.addListenerForFocusShow();
+  }
 
   ngOnInit(): void {
     this.keyboardService.keyboardNewFocus.subscribe((data: string) => {
       this.currentString = data;
     });
+  }
+
+  public get dockButtonText(): string {
+    return this.keyboardService.dockType === 'bottom' ? 'Up' : 'Down';
   }
 
   public get currentFocusedString(): string {
@@ -48,6 +44,14 @@ export class RainxKeyboardComponent implements OnInit {
 
   public set currentFocusedString(value: string) {
     this.currentString = value;
+  }
+
+  public addListenerForFocusShow(): void {
+    document.addEventListener('click', (event) => {
+      if (this.showOnlyFocus && document.activeElement?.tagName.toLowerCase() !== 'input') {
+        this.keyboardService.close();
+      }
+    }, false);
   }
 
   public addEmptySpace(): void {
@@ -79,29 +83,34 @@ export class RainxKeyboardComponent implements OnInit {
   }
 
   public minimize(): void {
-    if (!this.collapsed) {
-      this.collapsed = true;
-      this.height = 50;
-    } else {
-      this.collapsed = false;
-      this.height = 245;
-    }
+    this.collapsed = !this.collapsed;
+    this.height = this.collapsed ? this.maxHeight : this.minHeight;
   }
 
-  public charPressed(c: string): void {
-    if (c === '@capslock@') {
-      this.keyboardService.toogleCapsLock();
-    } else if (c === '@tab@') {
-      this.keyboardService.keyboardTab.emit();
-    } else if (c === '@backspace@') {
-      this.currentString = this.currentString.slice(0, -1);
-      this.keyboardService.value = this.currentString;
-      this.keyboardService.keyboardClick.emit(this.currentString);
-    } else {
-      this.currentString += c;
-      this.keyboardService.value = this.currentString;
-      this.keyboardService.keyboardClick.emit(this.currentString);
-    }
+  public charPressed(key: string): void {
+    this.currentString += key;
+    this.keyboardService.value = this.currentString;
+    this.keyboardService.keyboardClick.emit(this.currentString);
+  }
+
+  public handleCapsLock(): void {
+    this.keyboardService.toogleCapsLock();
+  }
+
+  public handleBackSpace(): void {
+    this.currentString = this.currentString.slice(0, -1);
+    this.keyboardService.value = this.currentString;
+    this.keyboardService.keyboardClick.emit(this.currentString);
+  }
+
+  public handleTabClick(): void {
+    this.keyboardService.keyboardTab.emit();
+  }
+
+  public handleLetterNumberClick(char: string): void {
+    this.currentString += char;
+    this.keyboardService.value = this.currentString;
+    this.keyboardService.keyboardClick.emit(this.currentString);
   }
 
 }
