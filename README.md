@@ -128,9 +128,11 @@
     
    ### In html :
 
-      <input rainxKeyboard [(ngModel)]="value" />
+      <input type="text" [(ngModel)]="value" />
 
-       <input rainxKeyboard [(ngModel)]="value" />
+      <input formControlName="value" />
+
+      <input />
 
       <rainx-keyboard [showOnlyFocus]="false">
 
