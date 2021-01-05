@@ -44,10 +44,12 @@
     export class AppModule { }
     
    In html :
-    
-      Add `rainxKeyboard` directive to all inputs.
 
-      <input rainxKeyboard [(ngModel)]="value" />
+      <input  type="text" [(ngModel)]="value" />
+
+      <input  type="text" formControlName="value" />
+
+      <input  type="text" />
 
       <rainx-keyboard [showOnlyFocus]="false">
 
