@@ -4,7 +4,7 @@ import { RainxKeyboardService } from './rainx-keyboard.service';
 
 @Directive({
   // tslint:disable-next-line: directive-selector
-  selector: '[rainxKeyboard]'
+  selector: 'input'
 })
 export class RainxKeyboardDirective implements OnInit {
 
@@ -16,14 +16,12 @@ export class RainxKeyboardDirective implements OnInit {
   ngOnInit(): void {
     if (this.ngControl) {
       const ctrl = this.ngControl.control;
-
-      this.handleTabClick();
-
       this.handleNonFunctionalKeyboardClick(ctrl);
-
     } else {
       this.handleNoBinding();
     }
+
+    this.handleTabClick();
   }
 
   public handleNoBinding(): void {
@@ -39,11 +37,12 @@ export class RainxKeyboardDirective implements OnInit {
 
   public handleTabClick(): void {
     this.keyboardService.keyboardTab.subscribe(() => {
+      debugger;
       if (this.keyboardService.canMove === false) {
         this.keyboardService.canMove = true;
         return;
       }
-      const array = Array.from(document.getElementsByTagName('input')).filter(x => x.hasAttribute('rainxKeyboard'));
+      const array = Array.from(document.getElementsByTagName('input'));
       const index = array.indexOf(document.activeElement as HTMLInputElement);
       this.keyboardService.canMove = false;
       setTimeout(() => {
