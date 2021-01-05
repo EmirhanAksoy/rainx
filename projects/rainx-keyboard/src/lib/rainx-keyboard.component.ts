@@ -64,9 +64,6 @@ export class RainxKeyboardComponent implements OnInit {
     this.isCapsLock = !this.isCapsLock;
   }
 
-  public silBtn(): void {
-    this.currentString = '';
-  }
 
   public temizleBtn(): void {
     this.currentString = this.currentString.slice(0, -1);
@@ -83,8 +80,13 @@ export class RainxKeyboardComponent implements OnInit {
   }
 
   public minimize(): void {
-    this.collapsed = !this.collapsed;
-    this.height = this.collapsed ? this.maxHeight : this.minHeight;
+    if (!this.collapsed) {
+      this.collapsed = true;
+      this.height = this.minHeight;
+    } else {
+      this.collapsed = false;
+      this.height = this.maxHeight;
+    }
   }
 
   public charPressed(key: string): void {
