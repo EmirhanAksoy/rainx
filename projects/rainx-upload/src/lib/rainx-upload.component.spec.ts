@@ -8,9 +8,9 @@ describe('RainxUploadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RainxUploadComponent ]
+      declarations: [RainxUploadComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
