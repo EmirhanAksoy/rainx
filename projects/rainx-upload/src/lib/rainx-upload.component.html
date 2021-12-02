@@ -1,6 +1,6 @@
-<input hidden #fileUploader type="file" />
+<input hidden #fileUploader type="file" multiple (change)="fileUploaded($event)" />
 
-<button class="file-upload-button" (click)="fileUploader.click()">
+<button class="file-upload-button" (click)="fileUploader.click()" >
     <div class="file-upload-button-content">
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="15.000000pt" height="15.000000pt"
             viewBox="0 0 225.000000 225.000000" preserveAspectRatio="xMidYMid meet">
@@ -25,7 +25,6 @@
    -170 252 -147 147 -182 177 -206 177 -24 0 -58 -29 -198 -167z" />
             </g>
         </svg>
-       <span class="file-upload-button-text">Upload</span> 
+        <span class="file-upload-button-text">{{ files | fileText }}</span>
     </div>
-
 </button>
