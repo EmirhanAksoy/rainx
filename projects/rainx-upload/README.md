@@ -1,24 +1,68 @@
-# RainxUpload
+# File Upload Component 
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.0.
+  This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.0.
 
-## Code scaffolding
+  https://www.npmjs.com/package/rainx-upload
+  
+  ## Demo Application 
 
-Run `ng generate component component-name --project rainx-upload` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project rainx-upload`.
-> Note: Don't forget to add `--project rainx-upload` or else it will be added to the default project in your `angular.json` file. 
+  https://stackblitz.com/edit/angular-ivy-dfqfaw
 
-## Build
+  ## Installation
 
-Run `ng build rainx-upload` to build the project. The build artifacts will be stored in the `dist/` directory.
+    npm install rainx-upload
+    
+  ## Usage 
+  
+   ### Module Import
+      
+      import { BrowserModule } from '@angular/platform-browser';
+      import { NgModule } from '@angular/core';
+      import { AppRoutingModule } from './app-routing.module';
+      import { AppComponent } from './app.component';
+      import { RainxUploadModule } from 'rainx-upload';
 
-## Publishing
+     @NgModule({
+       declarations: [
+         AppComponent,
+       ],
+       imports: [
+         BrowserModule,
+         AppRoutingModule,
+         RainxUploadModule
+       ],
+       providers: [],
+       bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+    
+   ### In the template
+  
+    <rainx-upload [multiple]="true" 
+                  [(files)]"="appFiles"
+                  [accept]="['image/png']" >
+    </rainx-upload>
+    
+    
+   ## Properties
+   
+   - multiple : Must be set to true to add multiple files
+      
+      type : booelan
+      defaut : false
+    
+   - maxSize : Max size of file
+   
+      type : number
+      defaut : 0   
 
-After building your library with `ng build rainx-upload`, go to the dist folder `cd dist/rainx-upload` and run `npm publish`.
+   - accept : Allowed mime types
+   
+      type : string []
+      defaut : []      
 
-## Running unit tests
-
-Run `ng test rainx-upload` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   ## Events 
+   
+   - filesChange : It is triggered when the file is loaded or files reset.
+   
+      return : File[] 
