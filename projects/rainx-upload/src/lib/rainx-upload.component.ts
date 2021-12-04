@@ -18,7 +18,7 @@ export class RainxUploadComponent implements OnInit {
 
   /**Two-way binding for files. */
   @Input() public files: File[] = [];
-  @Output() public filesChanged: EventEmitter<File[]> = new EventEmitter<File[]>();
+  @Output() public filesChange: EventEmitter<File[]> = new EventEmitter<File[]>();
 
   constructor() { }
 
@@ -38,7 +38,7 @@ export class RainxUploadComponent implements OnInit {
         return;
       }
       files.forEach((file: File) => this.files.push(file));
-      this.filesChanged.emit(this.files);
+      this.filesChange.emit(this.files);
     }
   }
 
@@ -49,7 +49,7 @@ export class RainxUploadComponent implements OnInit {
   public handleResetClick(event: MouseEvent) {
     event.stopPropagation();
     this.files = [];
-    this.filesChanged.emit(this.files);
+    this.filesChange.emit(this.files);
   }
 
 }
