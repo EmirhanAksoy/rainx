@@ -1,9 +1,12 @@
-<input hidden #fileUploader type="file" multiple (change)="fileUploaded($event)" />
+<input hidden #fileUploader type="file" [accept]="accept" [multiple]="multiple" (change)="handleFileUploaded($event)" />
 
-<button class="file-upload-button" (click)="fileUploader.click()" >
+<button class="file-upload-button" (click)="fileUploader.click()">
     <div class="file-upload-button-content">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="15.000000pt" height="15.000000pt"
-            viewBox="0 0 225.000000 225.000000" preserveAspectRatio="xMidYMid meet">
+        <div *ngIf="files.length" (click)="handleResetClick($event)" class="files-clear-badge">
+            <span class="reset-icon ">-</span>
+        </div>
+        <svg class="upload-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="15.000000pt"
+            height="15.000000pt" viewBox="0 0 225.000000 225.000000" preserveAspectRatio="xMidYMid meet">
 
             <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                 <path d="M1065 2154 c-74 -18 -180 -63 -236 -100 -69 -45 -153 -128 -184 -180

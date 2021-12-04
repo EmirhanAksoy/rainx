@@ -6,9 +6,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['rainx-upload.component.css']
 })
 export class RainxUploadComponent implements OnInit {
-  @Input() public mimes: string[] = [];
-  @Input() public maxSize: number = 40000;
+
+  /**Allowed mime types. */
+  @Input() public accept: string[] = [];
+
+  /**Allowed max size of file. */
+  @Input() public maxSize: number = 0;
+
+  /**Allow multiple file upload.*/
   @Input() public multiple: boolean = false;
+
+  /**Two-way binding for files. */
   @Input() public files: File[] = [];
   @Output() public filesChanged: EventEmitter<File[]> = new EventEmitter<File[]>();
 
@@ -17,14 +25,31 @@ export class RainxUploadComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public fileUploaded(event: any) {
+  /**
+   * File upload event handler
+   * @param event File upload event
+   * @returns 
+   */
+  public handleFileUploaded(event: any) {
     if (event.target.files) {
       const files: File[] = Array.from(event.target.files);
+      if (this.maxSize && files.some(x => x.size > this.maxSize)) {
+        console.error('Maximum size exceeded');
+        return;
+      }
       files.forEach((file: File) => this.files.push(file));
       this.filesChanged.emit(this.files);
     }
   }
 
-
+  /**
+   * File reset handler
+   * @param event Mouse click event
+   */
+  public handleResetClick(event: MouseEvent) {
+    event.stopPropagation();
+    this.files = [];
+    this.filesChanged.emit(this.files);
+  }
 
 }
