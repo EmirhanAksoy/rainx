@@ -4,10 +4,6 @@
 
   https://www.npmjs.com/package/rainx-upload
   
-  ## Demo Application 
-
-  https://stackblitz.com/edit/angular-ivy-dfqfaw
-
   ## Installation
 
     npm install rainx-upload
