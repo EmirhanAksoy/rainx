@@ -1,14 +1,22 @@
 <input hidden #fileUploader type="file" [accept]="accept" [multiple]="multiple" (change)="handleFileUploaded($event)" />
 
-<button class="file-upload-button" (click)="fileUploader.click()">
+<button title="Upload File" class="file-upload-button" (click)="fileUploader.click()">
     <div class="file-upload-button-content">
-        <div *ngIf="files.length" (click)="handleResetClick($event)" class="files-clear-badge">
-            <span class="reset-icon ">-</span>
+        <div *ngIf="files.length" title="Clear all" (click)="handleResetClick($event)" class="files-clear-badge">
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="256.000000pt" height="256.000000pt"
+                viewBox="0 0 256.000000 256.000000" preserveAspectRatio="xMidYMid meet">
+
+                <g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)" fill="currentColor"
+                    stroke="none">
+                    <path d="M534 1377 c-2 -8 -3 -56 -2 -108 l3 -94 745 0 745 0 0 105 0 105
+-743 3 c-611 2 -743 0 -748 -11z" />
+                </g>
+            </svg>
         </div>
         <svg class="upload-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="15.000000pt"
             height="15.000000pt" viewBox="0 0 225.000000 225.000000" preserveAspectRatio="xMidYMid meet">
 
-            <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+            <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" fill="#ffff" stroke="none">
                 <path d="M1065 2154 c-74 -18 -180 -63 -236 -100 -69 -45 -153 -128 -184 -180
    -18 -31 -20 -32 -104 -36 -105 -5 -160 -28 -231 -94 -71 -66 -102 -137 -108
    -244 l-4 -85 -52 -55 c-63 -67 -90 -110 -116 -186 -83 -240 33 -515 265 -630
@@ -30,4 +38,55 @@
         </svg>
         <span class="file-upload-button-text">{{ files | fileText }}</span>
     </div>
+    <div *ngIf="files.length && files.length > 1" title="Show Details" class="detail-button"
+        (click)="handleDetailClick($event)">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="840.000000pt" height="385.000000pt"
+            viewBox="0 0 840.000000 385.000000" preserveAspectRatio="xMidYMid meet">
+
+            <g transform="translate(0.000000,385.000000) scale(0.100000,-0.100000)" fill="#ffff" stroke="none">
+                <path d="M1852 3426 c-193 -63 -272 -286 -159 -451 12 -18 532 -583 1156
+-1256 732 -791 1153 -1237 1187 -1261 96 -65 209 -71 309 -15 37 21 211 205
+954 1007 125 135 492 531 816 880 622 671 629 679 642 788 11 95 -44 213 -124
+266 -61 40 -155 60 -221 47 -108 -22 -124 -36 -445 -380 -1375 -1480 -1762
+-1896 -1768 -1896 -6 0 -262 274 -1512 1620 -421 453 -570 607 -608 629 -61
+35 -159 44 -227 22z" />
+            </g>
+        </svg>
+    </div>
 </button>
+<div *ngIf=" files && files.length > 1 && showDetail" class="detail-box">
+    <div class="detail-item" *ngFor="let file of files;let i=index">
+        <div class="detail-item-row">
+            <div [title]="file.name" class="detail-item-content">
+                {{file.name}}
+            </div>
+            <div title="Download" (click)="downloadFileHandler(file)" class="detail-item-download">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1200.000000pt" height="1200.000000pt"
+                    viewBox="0 0 1200.000000 1200.000000" preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,1200.000000) scale(0.100000,-0.100000)" fill="currentColor"
+                        stroke="none">
+                        <path d="M5400 9000 l0 -2400 -1200 0 -1200 0 1496 -1795 c823 -987 1499
+-1795 1504 -1795 5 0 681 808 1504 1795 l1496 1795 -1200 0 -1200 0 0 2400 0
+2400 -600 0 -600 0 0 -2400z" />
+                        <path d="M603 3213 c3 -1579 3 -1589 24 -1673 120 -481 479 -826 958 -921 59
+-12 752 -14 4420 -14 4207 0 4353 1 4435 19 420 92 762 393 894 788 64 191 60
+57 63 1801 l3 1587 -600 0 -600 0 0 -1500 0 -1500 -4200 0 -4200 0 0 1500 0
+1500 -600 0 -600 0 3 -1587z" />
+                    </g>
+                </svg>
+            </div>
+            <div title="Remove" (click)="removeFileHandler(i)" class="detail-item-remove">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="256.000000pt" height="256.000000pt"
+                    viewBox="0 0 256.000000 256.000000" preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)" fill="currentColor"
+                        stroke="none">
+                        <path d="M534 1377 c-2 -8 -3 -56 -2 -108 l3 -94 745 0 745 0 0 105 0 105
+-743 3 c-611 2 -743 0 -748 -11z" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
