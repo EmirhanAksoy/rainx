@@ -16,9 +16,17 @@ export class RainxUploadComponent implements OnInit {
   /**Allow multiple file upload.*/
   @Input() public multiple: boolean = false;
 
+  /**Hide/show clear button*/
+  @Input() public showClearButton: boolean = true;
+
+  /**Hide/show detail button and dropdown */
+  @Input() public showFileDetails: boolean = true;
+
   /**Two-way binding for files. */
   @Input() public files: File[] = [];
+  
   @Output() public filesChange: EventEmitter<File[]> = new EventEmitter<File[]>();
+
   public showDetail: boolean = false;
 
   constructor() { }

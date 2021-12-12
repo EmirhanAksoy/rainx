@@ -2,7 +2,7 @@
 
 <button title="Upload File" class="file-upload-button" (click)="fileUploader.click()">
     <div class="file-upload-button-content">
-        <div *ngIf="files.length" title="Clear all" (click)="handleResetClick($event)" class="files-clear-badge">
+        <div *ngIf="files.length && showClearButton" title="Clear all" (click)="handleResetClick($event)" class="files-clear-badge">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="256.000000pt" height="256.000000pt"
                 viewBox="0 0 256.000000 256.000000" preserveAspectRatio="xMidYMid meet">
 
@@ -38,7 +38,7 @@
         </svg>
         <span class="file-upload-button-text">{{ files | fileText }}</span>
     </div>
-    <div *ngIf="files.length && files.length > 1" title="Show Details" class="detail-button"
+    <div *ngIf="files.length && files.length > 1 && showFileDetails" title="Show Details" class="detail-button"
         (click)="handleDetailClick($event)">
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="840.000000pt" height="385.000000pt"
             viewBox="0 0 840.000000 385.000000" preserveAspectRatio="xMidYMid meet">
@@ -54,7 +54,7 @@
         </svg>
     </div>
 </button>
-<div *ngIf=" files && files.length > 1 && showDetail" class="detail-box">
+<div *ngIf=" files && files.length > 1 && showDetail && showFileDetails" class="detail-box">
     <div class="detail-item" *ngFor="let file of files;let i=index">
         <div class="detail-item-row">
             <div [title]="file.name" class="detail-item-content">
