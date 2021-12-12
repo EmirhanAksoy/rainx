@@ -55,7 +55,17 @@
    - accept : Allowed mime types
    
       type : string []
-      defaut : []      
+      defaut : []
+
+   - enableReset :  Show/hide clear button
+
+      type: boolean 
+      default : true        
+
+   - enableDetails :  Show/hide detail button and dropdown
+
+      type: boolean 
+      default : true      
 
    ## Events 
    
