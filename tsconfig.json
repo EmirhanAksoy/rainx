@@ -26,6 +26,10 @@
         "dist/rainx-upload/rainx-upload",
         "dist/rainx-upload"
       ],
+      "rainx-listbox": [
+        "dist/rainx-listbox/rainx-listbox",
+        "dist/rainx-listbox"
+      ],
       "rainx-keyboard": [
         "dist/rainx-keyboard/rainx-keyboard",
         "dist/rainx-keyboard",

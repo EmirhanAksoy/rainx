@@ -162,6 +162,37 @@
           }
         }
       }
+    },
+    "rainx-listbox": {
+      "projectType": "library",
+      "root": "projects/rainx-listbox",
+      "sourceRoot": "projects/rainx-listbox/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/rainx-listbox/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/rainx-listbox/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/rainx-listbox/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rainx-listbox/src/test.ts",
+            "tsConfig": "projects/rainx-listbox/tsconfig.spec.json",
+            "karmaConfig": "projects/rainx-listbox/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "cli": {
