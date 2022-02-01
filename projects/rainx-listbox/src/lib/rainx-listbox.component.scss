@@ -10,12 +10,11 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     .item {
         width: 100%;
-        height: 100px;
+        height: 80px;
         padding-left: 10px;
         display: flex;
         align-items: center;
         user-select: none;
-        border-radius: 5px;
         border-bottom: 0.1px rgb(168, 166, 166) solid;
     }
 
@@ -23,6 +22,7 @@
         border-bottom: none;
     }
 
+    .item.selected,
     .item:hover {
         background-color: #199791;
         color: #fff;
@@ -31,7 +31,7 @@
 }
 
 .listbox::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
 }
 
 .listbox::-webkit-scrollbar-track {

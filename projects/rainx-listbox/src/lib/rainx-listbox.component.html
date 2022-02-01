@@ -1,5 +1,6 @@
 <div class="listbox">
-    <div *ngFor="let item of data" class="item">
+    <div *ngFor="let item of data | removed:removedItems:value" class="item"
+        [ngClass]="{'selected':selected === item[value]}" (click)="handleSelectionChange(item)">
         {{item | transform:display:seperator}}
     </div>
 </div>
