@@ -2,7 +2,9 @@
 
   This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.0.
 
-  https://www.npmjs.com/package/rainx-upload
+  NPM  : https://www.npmjs.com/package/rainx-upload
+
+  Demo : https://stackblitz.com/edit/angular-ivy-e3cxt2?file=src/app/app.component.ts
   
   ## Installation
 
