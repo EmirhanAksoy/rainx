@@ -23,16 +23,5 @@ export class RainxListboxComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  private convertData(list: any): void {
-    if (!Array.isArray(list))
-      throw new Error('Data must be array type');
-
-
-
-  }
-
-  private convertVisibleValues(){
-
-  }
 
 }
