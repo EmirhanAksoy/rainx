@@ -1,6 +1,19 @@
-<div class="listbox">
-    <div *ngFor="let item of data | removed:removedItems:value" class="item"
-        [ngClass]="{'selected':selected === item[value]}" (click)="handleSelectionChange(item)">
+<div class="listbox" [ngClass]="{'resize':resizeable}">
+    <div *ngFor="let item of data | removed:removedItems:key" class="item"
+        [ngClass]="{'selected':selectedKey === item[key]}" (click)="handleSelectionChange(item)">
         {{item | transform:display:seperator}}
+        <svg (click)="handleRemoveItem(item)" version="1.0" xmlns="http://www.w3.org/2000/svg" width="25.000000pt"
+            height="25.000000pt" viewBox="0 0 256.000000 256.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                <path d="M534 1377 c-2 -8 -3 -56 -2 -108 l3 -94 745 0 745 0 0 105 0 105
+        -743 3 c-611 2 -743 0 -748 -11z" />
+            </g>
+        </svg>
+    </div>
+    <div *ngIf="!data || !data.length" class="no-item">
+        No data found
+    </div>
+    <div *ngIf="removedItems.length === data.length" class="no-item">
+       All items were cleared
     </div>
 </div>

@@ -1,5 +1,4 @@
 .listbox {
-    min-height: 200px;
     min-height: 400px;
     max-height: 700px;
     max-width: 400px;
@@ -10,12 +9,18 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     .item {
         width: 100%;
-        height: 80px;
+        height: 70px;
         padding-left: 10px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         user-select: none;
         border-bottom: 0.1px rgb(168, 166, 166) solid;
+
+        svg{
+            margin-right: 20px;
+            cursor: pointer !important;
+        }
     }
 
     :last-child {
@@ -24,11 +29,27 @@
 
     .item.selected,
     .item:hover {
-        background-color: #199791;
+        background-color: #105652;
         color: #fff;
         cursor: pointer !important;
     }
+
+    .no-item {
+        min-height: 400px;
+        max-height: 700px;
+        max-width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: larger;
+        font-family: sans-serif;
+    }
+
+    .resize{
+        resize: both !important;
+    }
 }
+
 
 .listbox::-webkit-scrollbar {
     width: 10px;
