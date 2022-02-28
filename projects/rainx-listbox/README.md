@@ -1,24 +1,93 @@
-# RainxListbox
+# Listbox Component 
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.0.
+  This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.0.
 
-## Code scaffolding
+  https://www.npmjs.com/package/rainx-listbox
+  
+  ## Installation
 
-Run `ng generate component component-name --project rainx-listbox` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project rainx-listbox`.
-> Note: Don't forget to add `--project rainx-listbox` or else it will be added to the default project in your `angular.json` file. 
+    npm install rainx-listbox
+    
+  ## Usage 
+  
+   ### Module Import
+      
+      import { BrowserModule } from '@angular/platform-browser';
+      import { NgModule } from '@angular/core';
+      import { AppRoutingModule } from './app-routing.module';
+      import { AppComponent } from './app.component';
+      import { RainxListboxModule } from 'rainx-listbox';
 
-## Build
+     @NgModule({
+       declarations: [
+         AppComponent,
+       ],
+       imports: [
+         BrowserModule,
+         AppRoutingModule,
+         RainxListboxModule
+       ],
+       providers: [],
+       bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+    
+   ### In the template
+  
+    <rainx-listbox 
+            [data]="data" 
+            [key]="'id'" 
+            [display]="['no','name']">
+    </rainx-listbox>
+    
+   ## Properties
+   
+   - data : Data source for listbox 
+      
+      type : any []
+      defaut : []
+    
+   - key : Unique identifier for items
+   
+      type : string
+      defaut : 'id'   
 
-Run `ng build rainx-listbox` to build the project. The build artifacts will be stored in the `dist/` directory.
+   - display :  Display properties for items
+   
+      type : string [] | string
+      defaut : []
 
-## Publishing
+   - seperator :  Seperator for display values
 
-After building your library with `ng build rainx-listbox`, go to the dist folder `cd dist/rainx-listbox` and run `npm publish`.
+      type: string 
+      default : '-'        
 
-## Running unit tests
+   - primitive :  Indicates object or primitive type
 
-Run `ng test rainx-listbox` to execute the unit tests via [Karma](https://karma-runner.github.io).
+      type: boolean 
+      default : true      
 
-## Further help
+   - selectedKey :  Indicates selected item key
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+      type: any 
+      default : null      
+
+   - removeable :  Indicates items removeable or not
+
+      type: any 
+      default : null 
+
+   - resizeable :  Indicates listbox resizeable or not
+
+      type: any 
+      default : null        
+
+   ## Events 
+
+    - selectionChange : It is triggered when item selected.
+   
+      return : any[] 
+
+    - removeChange : It is triggered when items removed.
+   
+      return : any[] 
