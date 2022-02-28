@@ -10,10 +10,7 @@
             </g>
         </svg>
     </div>
-    <div *ngIf="!data || !data.length" class="no-item">
+    <div *ngIf="!data || !data.length || removedItems.length === data.length" class="no-item">
         No data found
-    </div>
-    <div *ngIf="removedItems.length === data.length" class="no-item">
-       All items were cleared
     </div>
 </div>
