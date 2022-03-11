@@ -5,10 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class MapPipe implements PipeTransform {
 
-  transform(source: any[], property: string): any[] {
+  transform(source: any[], property: string, defaultResult: any[] = []): any[] {
     if (!source || !source.length || !property.length)
-      return [];
-    return source.map(x => x[property]);
+      return defaultResult;
+    const mappedSource: any[] = source.map(x => x[property]);
+    return mappedSource.every(x => x === undefined) ? defaultResult : mappedSource;
   }
 
 }
