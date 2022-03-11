@@ -30,6 +30,10 @@
         "dist/rainx-listbox/rainx-listbox",
         "dist/rainx-listbox"
       ],
+      "rainx-pipes": [
+        "dist/rainx-pipes/rainx-pipes",
+        "dist/rainx-pipes"
+      ],
       "rainx-keyboard": [
         "dist/rainx-keyboard/rainx-keyboard",
         "dist/rainx-keyboard",
