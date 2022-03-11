@@ -4,6 +4,7 @@ import { FindPipe } from './pipes/find.pipe';
 import { MapPipe } from './pipes/map.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SelectPipe } from './pipes/select.pipe';
+import { ConcatPipe } from './pipes/concat.pipe';
 
 
 
@@ -13,7 +14,8 @@ import { SelectPipe } from './pipes/select.pipe';
     FindPipe,
     MapPipe,
     FilterPipe,
-    SelectPipe
+    SelectPipe,
+    ConcatPipe
   ],
   imports: [
   ],
