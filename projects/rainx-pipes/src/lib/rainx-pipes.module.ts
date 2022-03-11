@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RainxPipesComponent } from './rainx-pipes.component';
+import { FindPipe } from './pipes/find.pipe';
 
 
 
 @NgModule({
   declarations: [
-    RainxPipesComponent
+    RainxPipesComponent,
+    FindPipe
   ],
   imports: [
   ],
