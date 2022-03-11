@@ -5,6 +5,7 @@ import { MapPipe } from './pipes/map.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SelectPipe } from './pipes/select.pipe';
 import { ConcatPipe } from './pipes/concat.pipe';
+import { ReducePipe } from './pipes/reduce.pipe';
 
 
 
@@ -15,7 +16,8 @@ import { ConcatPipe } from './pipes/concat.pipe';
     MapPipe,
     FilterPipe,
     SelectPipe,
-    ConcatPipe
+    ConcatPipe,
+    ReducePipe
   ],
   imports: [
   ],
