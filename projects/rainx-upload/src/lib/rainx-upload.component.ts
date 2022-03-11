@@ -44,7 +44,7 @@ export class RainxUploadComponent implements OnInit {
     if (event.target.files) {
       const files: File[] = Array.from(event.target.files);
       if (this.maxSize && files.some(x => x.size > this.maxSize)) {
-        console.error('Maximum size exceeded');
+        console.error('Maximum size exceeded.');
         return;
       }
       files.forEach((file: File) => this.files.push(file));
@@ -90,7 +90,7 @@ export class RainxUploadComponent implements OnInit {
    */
   public removeFileHandler(index: number): void {
     this.files.splice(index, 1);
-    this.filesChange.emit(this.files)
+    this.filesChange.emit(this.files);
   }
 
 }
